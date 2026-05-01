@@ -18,7 +18,6 @@
   networking.networkmanager.enable = true;
 
   services.xserver.enable = true;
-  services.displayManager.sddm.enable = true;
   services.displayManager.defaultSession = "hyprland";
 
   sound.enable = true;
