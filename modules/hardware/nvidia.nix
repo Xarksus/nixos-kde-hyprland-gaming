@@ -23,7 +23,6 @@
     kernelPackages = pkgs.linuxPackages_zen;
     kernelParams = [
       "nvidia-drm.modeset=1"
-      "amd_pstate=active"
     ];
   };
 
