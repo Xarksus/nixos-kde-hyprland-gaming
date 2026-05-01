@@ -18,7 +18,6 @@
   networking.networkmanager.enable = true;
 
   services.xserver.enable = true;
-  services.displayManager.defaultSession = "plasma";
 
   sound.enable = true;
   hardware.pulseaudio.enable = false;
