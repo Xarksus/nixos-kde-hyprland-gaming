@@ -1,9 +1,14 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   services.xserver.videoDrivers = [ "nvidia" ];
 
-  hardware.graphics.enable = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   hardware.nvidia = {
     modesetting.enable = true;
@@ -14,7 +19,13 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  boot.kernelParams = [
-    "nvidia-drm.modeset=1"
-  ];
+  boot = {
+    kernelPackages = pkgs.linuxPackages_zen;
+    kernelParams = [
+      "nvidia-drm.modeset=1"
+      "amd_pstate=active"
+    ];
+  };
+
+  services.xserver.xrandrHeads = [ ];
 }
