@@ -1,0 +1,24 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Finalize Plasma Login Manager setup on NixOS unstable",
+      "status": "open"
+    },
+    {
+      "id": 2,
+      "title": "Add full Hyprland dotfiles and themes",
+      "status": "open"
+    },
+    {
+      "id": 3,
+      "title": "Improve Waybar and Wofi configuration",
+      "status": "open"
+    },
+    {
+      "id": 4,
+      "title": "Polish bash installer",
+      "status": "open"
+    }
+  ]
+}
