@@ -3,10 +3,8 @@
 {
   services.desktopManager.plasma6.enable = true;
 
-  services.displayManager.sddm = {
+  services.displayManager.plasma6 = {
     enable = true;
-    wayland.enable = true;
-    theme = "breeze";
   };
 
   environment.systemPackages = with pkgs; [
