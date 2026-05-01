@@ -2,6 +2,7 @@
 
 Dieses Repository enthält eine **modulare NixOS-Konfiguration** für ein Gaming-System mit:
 
+- **NixOS unstable**
 - **KDE Plasma 6**
 - **Hyprland**
 - **NVIDIA RTX 4050 8 GB**
@@ -44,12 +45,13 @@ Die Konfiguration soll eine einfache Basis liefern, die du per **Bash-Skript** n
 
 ## Login Manager
 
-Dieses Repo soll **nicht SDDM** verwenden, sondern den **Plasma Login Manager** aus dem KDE-Umfeld.
+Du willst **nicht SDDM**.
 
 Wichtig:
-- Der klassische KDE-Login auf NixOS ist normalerweise **SDDM**.
-- Wenn du ausdrücklich den neuen/anderen **Plasma Login Manager** willst, muss das in NixOS gezielt über eine eigene Display-Manager-/Greeter-Konfiguration gebaut werden.
-- Deshalb ist aktuell **keine feste Default-Session mehr hart gesetzt**, damit die spätere Plasma-Login-Manager-Integration nicht mit einer falschen SDDM-Annahme kollidiert.
+- Das klassische KDE-Login auf NixOS ist normalerweise **SDDM**.
+- Der von dir gewünschte **Plasma Login Manager** ist auf NixOS/unstable noch nicht überall als einfacher Standard-Schalter verfügbar.
+- Deshalb ist im Repo aktuell **kein falscher SDDM-Zwang** mehr gesetzt.
+- Für einen wirklich sauberen Wechsel auf den neuen Plasma-Login-Manager sollte als Nächstes ein gezieltes unstable-Setup mit passender Option oder einem eigenen Modul gebaut werden.
 
 ## Nutzung
 
@@ -86,7 +88,7 @@ Bitte nach dem ersten Login ändern.
 
 Wenn du willst, kann ich als Nächstes noch ergänzen:
 
-- echte **Plasma Login Manager**-Integration statt SDDM
+- echte **Plasma Login Manager**-Integration für unstable
 - vollständige **Waybar-Konfiguration**
 - **Wofi-Theme**
 - extra **Hyprland Dotfiles**
