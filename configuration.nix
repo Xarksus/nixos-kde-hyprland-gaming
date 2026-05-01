@@ -13,18 +13,30 @@
   networking.hostName = "nixos-gaming";
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "de_DE.UTF-8";
+  console.keyMap = "de";
+
+  networking.networkmanager.enable = true;
 
   services.xserver.enable = true;
   services.displayManager.sddm.enable = true;
+  services.displayManager.defaultSession = "hyprland";
+
+  sound.enable = true;
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
 
   users.users.gamer = {
     isNormalUser = true;
     description = "Gaming User";
-    extraGroups = [ "wheel" "networkmanager" "video" "audio" ];
+    extraGroups = [ "wheel" "networkmanager" "video" "audio" "input" ];
     initialPassword = "changeme";
   };
-
-  networking.networkmanager.enable = true;
 
   environment.systemPackages = with pkgs; [
     git
