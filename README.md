@@ -1,28 +1,46 @@
 # NixOS KDE + Hyprland Gaming Setup
 
-Dieses Repository enthält eine **modulare NixOS-Konfiguration** für:
+Dieses Repository enthält eine **modulare NixOS-Konfiguration** für ein Gaming-System mit:
 
 - **KDE Plasma 6**
 - **Hyprland**
-- **NVIDIA**
-- **Zen Kernel** (derzeit als Platzhalter dokumentiert, da NixOS standardmäßig Linux-Kernel-Pakete nutzt und der echte Zen-Standalone je nach Channel/Overlay variiert)
+- **NVIDIA RTX 4050 8 GB**
+- **AMD Ryzen 5 2600**
+- **Zen Kernel**
 - **Gaming-Tools**
   - Steam
   - Lutris
   - Heroic
   - MangoHud
   - Gamescope
-  - ProtonPlus (derzeit als Flatpak integriert)
-- **Bash-Installer**, der die Konfiguration nach `/etc/nixos` kopiert
+  - Bottles
+  - PrismLauncher
+  - Protontricks
+  - ProtonPlus (per Flatpak im Install-Skript)
+
+## Ziel
+
+Die Konfiguration soll eine einfache Basis liefern, die du per **Bash-Skript** nach `/etc/nixos` kopieren und dann mit `nixos-rebuild switch` aktivieren kannst.
 
 ## Struktur
 
 - `configuration.nix` – Hauptkonfiguration
 - `modules/desktop/kde.nix` – KDE Plasma
-- `modules/desktop/hyprland.nix` – Hyprland + Grundtools
-- `modules/hardware/nvidia.nix` – NVIDIA-Konfiguration
+- `modules/desktop/hyprland.nix` – Hyprland + old-style Grundkonfiguration
+- `modules/hardware/nvidia.nix` – NVIDIA + Zen-Kernel + AMD-Microcode
 - `modules/gaming/default.nix` – Gaming-Pakete
 - `scripts/install.sh` – Bash-Installer
+
+## Hardware-Hinweise
+
+### NVIDIA RTX 4050
+- Nutzt den proprietären **stabilen NVIDIA-Treiber**
+- `nvidia-drm.modeset=1` ist aktiviert
+- 32-Bit-Grafikunterstützung ist für Steam/Wine aktiviert
+
+### Ryzen 5 2600
+- AMD-Microcode ist eingebunden
+- PipeWire ist für Audio eingerichtet
 
 ## Nutzung
 
@@ -46,13 +64,22 @@ sudo ./scripts/install.sh
 sudo nixos-rebuild switch
 ```
 
-## Wichtige Hinweise
+## Login
 
-### NVIDIA
-Die NVIDIA-Konfiguration ist auf **proprietären Treiber** ausgelegt. Je nach GPU-Generation musst du ggf. Legacy-Treiber verwenden.
+Standardmäßig wird ein Benutzer angelegt:
 
-### Zen Kernel
-In dieser ersten Version nutze ich einen stabilen NixOS-Ansatz. Wenn du willst, kann ich dir im nächsten Schritt noch eine **echte Zen-Kernel-Variante über Overlay/Flake** ergänzen.
+- **Benutzername:** `gamer`
+- **Passwort:** `changeme`
 
-### Hyprland-Config im "old style"
-Es ist eine einfache klassische Konfigurationsstruktur vorbereitet. Wenn du willst, kann ich dir als Nächstes noch eine schönere, vollständige `hyprland.conf` mit Keybinds, Waybar, Wofi und Monitor-Regeln bauen.
+Bitte nach dem ersten Login ändern.
+
+## Nächste sinnvolle Schritte
+
+Wenn du willst, kann ich als Nächstes noch ergänzen:
+
+- vollständige **Waybar-Konfiguration**
+- **Wofi-Theme**
+- extra **Hyprland Dotfiles**
+- **Flake-Version**
+- automatische **NVIDIA/AMD-Hardware-Erkennung**
+- getrennte Profile für **KDE** und **Hyprland**
