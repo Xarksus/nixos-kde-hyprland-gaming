@@ -32,6 +32,10 @@ Die Konfiguration soll eine einfache Basis liefern, die du per **Bash-Skript** n
 - `modules/hardware/nvidia.nix` – NVIDIA + Zen-Kernel + AMD-Microcode
 - `modules/gaming/default.nix` – Gaming-Pakete
 - `scripts/install.sh` – Bash-Installer
+- `scripts/load-memory.sh` – lädt die gespeicherten Wissensdaten
+- `memory/project-profile.json` – Projekt- und Hardware-Profil
+- `memory/preferences.json` – Präferenzen und Wunsch-Setup
+- `memory/todo.json` – offene Aufgaben
 
 ## Hardware-Hinweise
 
@@ -81,6 +85,24 @@ sudo nixos-rebuild switch
 ```bash
 sudo nixos-rebuild switch --flake .#nixos-gaming
 ```
+
+## Projekt-Wissen für App oder Skripte
+
+Damit eine App oder ein lokales Tool das Projektwissen nutzen kann, liegen die Daten im Ordner `memory/` als JSON-Dateien.
+
+### Dateien
+- `memory/project-profile.json`
+- `memory/preferences.json`
+- `memory/todo.json`
+
+### Per Bash laden
+
+```bash
+chmod +x scripts/load-memory.sh
+./scripts/load-memory.sh
+```
+
+Das Skript gibt die JSON-Daten direkt aus. Eine App kann dieselben Dateien selbst einlesen und weiterverarbeiten.
 
 ## Login
 
