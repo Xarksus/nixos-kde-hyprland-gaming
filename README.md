@@ -42,6 +42,15 @@ Die Konfiguration soll eine einfache Basis liefern, die du per **Bash-Skript** n
 - AMD-Microcode ist eingebunden
 - PipeWire ist für Audio eingerichtet
 
+## Login Manager
+
+Dieses Repo soll **nicht SDDM** verwenden, sondern den **Plasma Login Manager** aus dem KDE-Umfeld.
+
+Wichtig:
+- Der klassische KDE-Login auf NixOS ist normalerweise **SDDM**.
+- Wenn du ausdrücklich den neuen/anderen **Plasma Login Manager** willst, muss das in NixOS gezielt über eine eigene Display-Manager-/Greeter-Konfiguration gebaut werden.
+- Deshalb ist aktuell **keine feste Default-Session mehr hart gesetzt**, damit die spätere Plasma-Login-Manager-Integration nicht mit einer falschen SDDM-Annahme kollidiert.
+
 ## Nutzung
 
 ### 1. Repository klonen
@@ -77,6 +86,7 @@ Bitte nach dem ersten Login ändern.
 
 Wenn du willst, kann ich als Nächstes noch ergänzen:
 
+- echte **Plasma Login Manager**-Integration statt SDDM
 - vollständige **Waybar-Konfiguration**
 - **Wofi-Theme**
 - extra **Hyprland Dotfiles**
