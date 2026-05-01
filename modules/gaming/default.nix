@@ -1,7 +1,11 @@
 { pkgs, ... }:
 
 {
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+  };
+
   programs.gamemode.enable = true;
 
   environment.systemPackages = with pkgs; [
@@ -13,5 +17,8 @@
     winetricks
     prismlauncher
     bottles
+    protontricks
+    vulkan-tools
+    dxvk
   ];
 }
