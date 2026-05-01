@@ -5,7 +5,7 @@ Dieses Repository enthält eine **modulare NixOS-Konfiguration** für ein Gaming
 - **NixOS unstable**
 - **KDE Plasma 6**
 - **Hyprland**
-- **NVIDIA RTX 4050 8 GB**
+- **NVIDIA RTX 3050 8 GB**
 - **AMD Ryzen 5 2600**
 - **Zen Kernel**
 - **Gaming-Tools**
@@ -21,10 +21,11 @@ Dieses Repository enthält eine **modulare NixOS-Konfiguration** für ein Gaming
 
 ## Ziel
 
-Die Konfiguration soll eine einfache Basis liefern, die du per **Bash-Skript** nach `/etc/nixos` kopieren und dann mit `nixos-rebuild switch` aktivieren kannst.
+Die Konfiguration soll eine einfache Basis liefern, die du per **Bash-Skript** nach `/etc/nixos` kopieren und dann mit `nixos-rebuild switch` oder per Flake aktivieren kannst.
 
 ## Struktur
 
+- `flake.nix` – unstable Flake-Einstieg
 - `configuration.nix` – Hauptkonfiguration
 - `modules/desktop/kde.nix` – KDE Plasma
 - `modules/desktop/hyprland.nix` – Hyprland + old-style Grundkonfiguration
@@ -34,7 +35,7 @@ Die Konfiguration soll eine einfache Basis liefern, die du per **Bash-Skript** n
 
 ## Hardware-Hinweise
 
-### NVIDIA RTX 4050
+### NVIDIA RTX 3050
 - Nutzt den proprietären **stabilen NVIDIA-Treiber**
 - `nvidia-drm.modeset=1` ist aktiviert
 - 32-Bit-Grafikunterstützung ist für Steam/Wine aktiviert
@@ -49,9 +50,9 @@ Du willst **nicht SDDM**.
 
 Wichtig:
 - Das klassische KDE-Login auf NixOS ist normalerweise **SDDM**.
-- Der von dir gewünschte **Plasma Login Manager** ist auf NixOS/unstable noch nicht überall als einfacher Standard-Schalter verfügbar.
-- Deshalb ist im Repo aktuell **kein falscher SDDM-Zwang** mehr gesetzt.
-- Für einen wirklich sauberen Wechsel auf den neuen Plasma-Login-Manager sollte als Nächstes ein gezieltes unstable-Setup mit passender Option oder einem eigenen Modul gebaut werden.
+- Der von dir gewünschte **Plasma Login Manager** ist auf NixOS unstable noch nicht überall als einfacher Standard-Schalter verfügbar.
+- Deshalb ist im Repo aktuell **kein falscher SDDM-Zwang** gesetzt.
+- Als nächster Schritt kann ein eigenes unstable-Modul oder die passende neue Option für PLM ergänzt werden.
 
 ## Nutzung
 
@@ -69,10 +70,16 @@ chmod +x scripts/install.sh
 sudo ./scripts/install.sh
 ```
 
-### 3. System anwenden
+### 3. Klassisch anwenden
 
 ```bash
 sudo nixos-rebuild switch
+```
+
+### 4. Oder per Flake auf unstable
+
+```bash
+sudo nixos-rebuild switch --flake .#nixos-gaming
 ```
 
 ## Login
@@ -92,6 +99,5 @@ Wenn du willst, kann ich als Nächstes noch ergänzen:
 - vollständige **Waybar-Konfiguration**
 - **Wofi-Theme**
 - extra **Hyprland Dotfiles**
-- **Flake-Version**
 - automatische **NVIDIA/AMD-Hardware-Erkennung**
 - getrennte Profile für **KDE** und **Hyprland**
