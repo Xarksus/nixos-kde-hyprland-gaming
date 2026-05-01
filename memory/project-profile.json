@@ -1,0 +1,23 @@
+{
+  "project": {
+    "name": "nixos-kde-hyprland-gaming",
+    "goal": "NixOS unstable setup with KDE Plasma, Hyprland, NVIDIA, Zen kernel and gaming tools installable via bash script"
+  },
+  "hardware": {
+    "gpu": "NVIDIA GeForce RTX 3050 8GB",
+    "cpu": "AMD Ryzen 5 2600"
+  },
+  "preferences": {
+    "channel": "nixos-unstable",
+    "desktop": ["KDE Plasma", "Hyprland"],
+    "kernel": "linuxPackages_zen",
+    "gamingStyle": "CachyOS-like",
+    "loginManagerPreference": "Plasma Login Manager (not SDDM)",
+    "installMethod": "bash script"
+  },
+  "status": {
+    "repoCreated": true,
+    "flakeAdded": true,
+    "memoryEnabled": true
+  }
+}
