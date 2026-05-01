@@ -1,0 +1,26 @@
+{
+  "ui": {
+    "desktopPreference": "KDE Plasma + Hyprland",
+    "hyprlandStyle": "old-school"
+  },
+  "system": {
+    "kernel": "linuxPackages_zen",
+    "nvidia": true,
+    "gpuModel": "RTX 3050 8GB",
+    "cpuModel": "Ryzen 5 2600",
+    "channel": "nixos-unstable"
+  },
+  "gaming": {
+    "steam": true,
+    "lutris": true,
+    "heroic": true,
+    "mangohud": true,
+    "gamescope": true,
+    "protonplus": true,
+    "cachyosStyle": true
+  },
+  "loginManager": {
+    "preferred": "Plasma Login Manager",
+    "avoid": ["SDDM"]
+  }
+}
